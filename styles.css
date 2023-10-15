@@ -66,14 +66,24 @@ a {
   text-decoration: none;
 }
 
+/*============================
+GENERAL LAYOUT AND STYLES=====
+==============================*/
 .btn {
   color: white;
   font-weight: 700;
+  transition: all 0.5s;
+  background: red;
+}
+
+.btn:hover {
+  color: red;
+  background-color: white;
 }
 
 /*============================
-LAYOUT AND STYLES==============
-============================*/
+SPECIFIC LAYOUT AND STYLES====
+==============================*/
 
 /* ------HEADER------ */
 .header {
@@ -90,20 +100,17 @@ LAYOUT AND STYLES==============
 
 .navigation__button {
   margin-top: 3.5em;
-  font-weight: 700;
-  background-color: red;
 }
 
 /* ------MAIN------ */
 .main {
-  background: blue;
   width: 85%;
   margin: 2em auto;
 }
 
 /* ------JAVASCRIPT STYLES------ */
 .form {
-  width: 80%;
+  width: 280px;
   margin: 2em auto;
   position: absolute;
   top: 50%;
@@ -113,7 +120,7 @@ LAYOUT AND STYLES==============
 }
 
 .form__fieldset {
-  border: 2px solid blue;
+  border: 2px solid red;
   border-radius: 10px;
 }
 
@@ -126,13 +133,9 @@ LAYOUT AND STYLES==============
 .form__input {
   margin: 1.5em auto;
   display: block;
-  width: 80%;
+  width: 230px;
   border-radius: 5px;
-  padding: 0.6em 0;
-}
-
-.form__input::placeholder {
-  padding-left: 0.7em;
+  padding: 0.6em 0.7em;
 }
 
 .form__label-read {
@@ -150,4 +153,8 @@ LAYOUT AND STYLES==============
 .hidden {
   visibility: hidden;
   opacity: 0;
+}
+
+.blur {
+  filter: blur(8px);
 }

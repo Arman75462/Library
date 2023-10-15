@@ -1,5 +1,12 @@
 "use strict";
 
+/* SELECTORS */
+const main = document.querySelector("main");
+const header = document.querySelector(".header");
+const form = document.querySelector(".form");
+const navButton = document.querySelector(".navigation__button");
+const submitBookButton = document.querySelector(".form__button");
+
 // Where your books are
 const myLibrary = [];
 
@@ -22,12 +29,31 @@ function addBookToLibrary() {
     console.log(book);
   });
 }
-
 addBookToLibrary();
 
-/* 
-1) T'a besoin d'une option pour rentrer le nom du livre, l' auteur du livre, et si la personne a lu le livre ou pas.
+// Function to hide form
+function hideForm() {
+  form.classList.add("hidden");
+  header.classList.remove("blur");
+  main.classList.remove("blur");
+}
 
-2) Ensuite, tu clique sur un boutton qui va envoyer ces informations dans une section où tu va voir ces informations se sauvegarder dans ta page
+// Function to show form
+function showForm() {
+  form.classList.remove("hidden");
+  header.classList.add("blur");
+  main.classList.add("blur");
+}
 
-3) Si ta rien compris va voir les exemples dans TOP */
+// Event listener to make form appear when clicking nav__button
+navButton.addEventListener("click", function (event) {
+  event.stopPropagation(); // Prevent the click event from propagating to the document level
+  showForm();
+});
+
+// Event listener to hide the form when clicking outside of it
+document.addEventListener("click", function (event) {
+  if (event.target !== form && !form.classList.contains("hidden")) {
+    hideForm();
+  }
+});

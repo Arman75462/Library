@@ -19,42 +19,43 @@
       </nav>
     </header>
     <!-- MAIN -->
-    <main class="main">
-      <!-- FORM -->
-      <form action="#" class="form">
-        <fieldset class="form__fieldset">
-          <legend class="form__legend">Add new book!</legend>
-          <input
-            type="text"
-            required
-            placeholder="Title"
-            maxlength="30"
-            class="form__title form__input"
-          />
-          <input
-            type="text"
-            required
-            placeholder="Author"
-            maxlength="30"
-            class="form__author form__input"
-          />
-          <input
-            type="number"
-            required
-            placeholder="Pages"
-            class="form__pages form__input"
-            max="10000"
-            min="0"
-          />
-          <div class="form__container-read">
-            <label for="checkbox" class="form__label-read"
-              >Have you read it?</label
-            >
-            <input type="checkbox" class="form__read" />
-          </div>
-          <button type="button" class="btn form__button">Submit</button>
-        </fieldset>
-      </form>
-    </main>
+    <main class="main"></main>
+
+    <!-- FORM -->
+    <form action="#" class="form hidden">
+      <fieldset class="form__fieldset">
+        <legend class="form__legend">Add new book!</legend>
+        <input
+          type="text"
+          required
+          placeholder="Title"
+          maxlength="30"
+          class="form__title form__input"
+        />
+        <input
+          type="text"
+          required
+          placeholder="Author"
+          maxlength="30"
+          class="form__author form__input"
+        />
+        <input
+          type="number"
+          required
+          placeholder="Pages"
+          class="form__pages form__input"
+          max="10000"
+          min="0"
+        />
+        <div class="form__container-read">
+          <label for="checkbox" class="form__label-read"
+            >Have you read it?</label
+          >
+          <input type="checkbox" class="form__read" />
+        </div>
+        <button type="button" class="btn form__button">Submit</button>
+      </fieldset>
+    </form>
+    <script src="script.js"></script>
   </body>
 </html>
