@@ -72,7 +72,7 @@ GENERAL LAYOUT AND STYLES=====
 .btn {
   color: white;
   font-weight: 700;
-  transition: all 0.5s;
+  transition: all 0.35s;
   background: red;
 }
 
@@ -92,13 +92,13 @@ SPECIFIC LAYOUT AND STYLES====
   padding: 2em;
 }
 
-.navigation__title {
+.header__title {
   font-size: 3.5rem;
   margin-top: 0.5em;
   font-weight: 300;
 }
 
-.navigation__button {
+.header__button {
   margin-top: 3.5em;
 }
 
@@ -106,17 +106,21 @@ SPECIFIC LAYOUT AND STYLES====
 .main {
   width: 85%;
   margin: 2em auto;
+  background-color: aquamarine;
 }
 
 /* ------JAVASCRIPT STYLES------ */
+
+/* ------FORM------ */
 .form {
   width: 280px;
   margin: 2em auto;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  transition: all 0.5s; /* Add transition property */
 }
 
 .form__fieldset {
@@ -158,3 +162,5 @@ SPECIFIC LAYOUT AND STYLES====
 .blur {
   filter: blur(8px);
 }
+
+/* ------LIBRARY----- */
