@@ -81,6 +81,20 @@ GENERAL LAYOUT AND STYLES=====
   background-color: white;
 }
 
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.blur {
+  filter: blur(8px);
+}
+
+:root {
+  --transition500ms: all 500ms;
+  --transition250ms: all 250ms;
+}
+
 /*============================
 SPECIFIC LAYOUT AND STYLES====
 ==============================*/
@@ -102,25 +116,89 @@ SPECIFIC LAYOUT AND STYLES====
   margin-top: 3.5em;
 }
 
-/* ------MAIN------ */
-.main {
-  width: 85%;
-  margin: 2em auto;
-  background-color: aquamarine;
+@media (min-width: 600px) {
+  .header__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 3em;
+  }
+
+  .header__title,
+  .header__button {
+    margin: 0;
+  }
 }
 
-/* ------JAVASCRIPT STYLES------ */
+/* ------MAIN------ */
+.main {
+  margin: 2em auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+
+/* ------BOOK-INFO---- */
+.book-info {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.307),
+    rgba(255, 0, 0, 0.729)
+  );
+  text-align: center;
+  border-radius: 10px;
+  width: 270px;
+  color: white;
+}
+
+.book-info__title {
+  margin: 1em 0em;
+}
+
+.book-info__author {
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+.book-info__pages {
+  font-size: 0.9rem;
+}
+
+.book-info__read,
+.book-info__remove {
+  padding: 1em 1.5em;
+  display: inline-block;
+  margin: 1.5em 0em;
+  font-weight: 500;
+  transition: var(--transition250ms);
+}
+
+.book-info__remove {
+  background: #cdcdcd;
+  color: black;
+}
+
+.book-info__remove:hover,
+.book-info__read:hover {
+  transform: scale(1.05);
+}
+
+.book-info__read {
+  margin-right: 0.5em;
+}
 
 /* ------FORM------ */
 .form {
-  width: 280px;
+  width: 250px;
   margin: 2em auto;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  transition: all 0.5s; /* Add transition property */
+  transition: var(--transition500ms); /* Add transition property */
 }
 
 .form__fieldset {
@@ -137,7 +215,7 @@ SPECIFIC LAYOUT AND STYLES====
 .form__input {
   margin: 1.5em auto;
   display: block;
-  width: 230px;
+  width: 200px;
   border-radius: 5px;
   padding: 0.6em 0.7em;
 }
@@ -153,14 +231,3 @@ SPECIFIC LAYOUT AND STYLES====
 .form__button {
   margin-bottom: 1em;
 }
-
-.hidden {
-  visibility: hidden;
-  opacity: 0;
-}
-
-.blur {
-  filter: blur(8px);
-}
-
-/* ------LIBRARY----- */
