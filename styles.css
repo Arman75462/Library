@@ -138,6 +138,7 @@ SPECIFIC LAYOUT AND STYLES====
   align-items: center;
   flex-wrap: wrap;
   gap: 2em;
+  width: 90%;
 }
 
 /* ------BOOK-INFO---- */
@@ -151,6 +152,7 @@ SPECIFIC LAYOUT AND STYLES====
   border-radius: 10px;
   width: 270px;
   color: white;
+  transition: opacity 500ms;
 }
 
 .book-info__title {
