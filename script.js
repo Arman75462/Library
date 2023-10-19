@@ -16,6 +16,21 @@ const bookReadInput = document.querySelector(".form__read");
 // Create an array to store your library of books
 const myLibrary = [];
 
+// Constructor function for creating a book object
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
+
+  // A function to get book information
+  this.info = function () {
+    return `${title} by ${author}, ${pages} pages, ${
+      read ? "has been read" : "hasn't been read yet"
+    }`;
+  };
+}
+
 // Function to hide the form and reveal the main content
 function hideForm() {
   form.classList.add("hidden");
@@ -51,7 +66,7 @@ navButton.addEventListener("click", function () {
 function displayBooks() {
   main.innerHTML = ""; // Clear the main element
 
-  myLibrary.forEach(function (book, index) {
+  myLibrary.forEach(function (index) {
     // Create a new book-info element for each book
     const bookInfoElement = document.createElement("section");
     bookInfoElement.classList.add("book-info");
@@ -59,21 +74,21 @@ function displayBooks() {
     // Create elements to display book information
     const titleElement = document.createElement("h2");
     titleElement.classList.add("book-info__title");
-    titleElement.textContent = book.title;
+    titleElement.textContent = bookTitleInput.value;
 
     const authorElement = document.createElement("p");
     authorElement.classList.add("book-info__author");
-    authorElement.textContent = book.author;
+    authorElement.textContent = bookAuthorInput.value;
 
     const pagesElement = document.createElement("p");
     pagesElement.classList.add("book-info__pages");
-    pagesElement.textContent = `${book.pages} pages`;
+    pagesElement.textContent = `${bookPagesInput.value} pages`;
 
     const readElement = document.createElement("span");
     readElement.classList.add("book-info__read");
-    readElement.textContent = book.read ? "Read" : "Not read";
+    readElement.textContent = index.read ? "Read" : "Not read";
 
-    if (book.read) {
+    if (index.read) {
       readElement.style.border = "2px solid green";
       readElement.style.backgroundColor = "rgba(0, 174, 0, 0.524)";
     } else {
@@ -107,6 +122,7 @@ function displayBooks() {
   });
 }
 
+// Add book-info to the library in code and UI form
 submitBookButton.addEventListener("click", function () {
   // Create a new book object with user input
   const book = new Book(
@@ -116,31 +132,25 @@ submitBookButton.addEventListener("click", function () {
     bookReadInput.checked
   );
 
-  // Add the book to the library
-  myLibrary.push(book);
+  // If one of the form's input is not completed, showForm()
+  if (
+    bookTitleInput.value === "" ||
+    bookAuthorInput.value === "" ||
+    bookPagesInput.value === ""
+  ) {
+    showForm();
+  } else {
+    // Add the book to the library
+    myLibrary.push(book);
 
-  // Display all books in the library
-  displayBooks();
+    // Display all books in the library
+    displayBooks();
 
-  // Reset form input fields
-  hideForm();
-  bookTitleInput.value = "";
-  bookAuthorInput.value = "";
-  bookPagesInput.value = "";
-  bookReadInput.checked = false;
+    // Reset form input fields
+    hideForm();
+    bookTitleInput.value = "";
+    bookAuthorInput.value = "";
+    bookPagesInput.value = "";
+    bookReadInput.checked = false;
+  }
 });
-
-// Constructor function for creating a book object
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-
-  // A function to get book information
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${
-      read ? "has been read" : "hasn't been read yet"
-    }`;
-  };
-}
