@@ -71,8 +71,13 @@ GENERAL LAYOUT AND STYLES=====
 .btn {
   color: white;
   font-weight: 700;
-  transition: all 0.35s;
+  transition: var(--transition350ms);
   background-color: var(--red-wine);
+  display: inline-block;
+  border-radius: 10px;
+  padding: 1em 2.5em;
+  border: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 .btn:hover {
@@ -92,6 +97,7 @@ GENERAL LAYOUT AND STYLES=====
 :root {
   --transition500ms: all 500ms;
   --transition250ms: all 250ms;
+  --transition350ms: all 350ms;
   --red-wine: #6b2737;
   --light-yellow: #f8f4a6;
   --light-gray: #eeeeee;
@@ -118,24 +124,6 @@ SPECIFIC LAYOUT AND STYLES====
 
 .header__button {
   margin-top: 3.5em;
-}
-
-/*============================
-MEDIA QUERIES================
-==============================*/
-
-@media (min-width: 600px) {
-  .header__navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1em 3em;
-  }
-
-  .header__title,
-  .header__button {
-    margin: 0;
-  }
 }
 
 /* ------MAIN------ */
@@ -230,6 +218,34 @@ MEDIA QUERIES================
   padding: 0.6em 0.7em;
 }
 
+.form__close-form {
+  border-radius: 50%;
+  background: var(--red-wine);
+  color: white;
+  display: inline-block;
+  padding: 0.5em;
+  font-size: 1.3rem;
+  transition: all 300ms;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.form__close-form:hover {
+  background-color: white;
+  color: var(--red-wine);
+}
+
+.form__submit-form {
+  padding: 0.9em 1.5em;
+}
+
+.form__container-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 200px;
+  margin: 0 auto 1em;
+}
+
 .form__label-read {
   margin-right: 0.5em;
 }
@@ -238,6 +254,19 @@ MEDIA QUERIES================
   margin-bottom: 1em;
 }
 
-.form__button {
-  margin-bottom: 1em;
+/*============================
+MEDIA QUERIES================
+==============================*/
+@media (min-width: 600px) {
+  .header__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 3em;
+  }
+
+  .header__title,
+  .header__button {
+    margin: 0;
+  }
 }

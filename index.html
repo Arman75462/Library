@@ -3,14 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- CSS framework styles-->
-    <link
-      rel="stylesheet"
-      href="../../../CSS-stuff/CSS-framework/framework.css"
-    />
-    <!-- CSS sheet styles -->
+    <!-- Include your external CSS stylesheet -->
     <link rel="stylesheet" href="styles.css" />
-    <!-- Favicon image -->
+    <!-- Favicon for the browser tab -->
     <link rel="icon" href="book.png" type="image/png" />
     <!-- Tab title -->
     <title>Library</title>
@@ -26,7 +21,7 @@
 
     <!-- MAIN -->
     <main class="main">
-      <!-- BOOK-INFO goes here-->
+      <!-- Placeholder for book information -->
     </main>
 
     <!-- FORM -->
@@ -61,7 +56,10 @@
           >
           <input type="checkbox" class="form__read" />
         </div>
-        <button type="submit" class="btn form__button">Submit</button>
+        <div class="form__container-buttons">
+          <div class="form__close-form">X</div>
+          <button type="submit" class="btn form__submit-form">Submit</button>
+        </div>
       </fieldset>
     </form>
 

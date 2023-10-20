@@ -7,7 +7,8 @@ const navButton = document.querySelector(".header__button");
 
 /* Form selectors */
 const form = document.querySelector(".form");
-const submitBookButton = document.querySelector(".form__button");
+const submitBookButton = document.querySelector(".form__submit-form");
+const closeFormButton = document.querySelector(".form__close-form");
 const bookTitleInput = document.querySelector(".form__title");
 const bookAuthorInput = document.querySelector(".form__author");
 const bookPagesInput = document.querySelector(".form__pages");
@@ -22,13 +23,6 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
-
-  // A function to get book information
-  this.info = function () {
-    return `${title} by ${author}, ${pages} pages, ${
-      read ? "has been read" : "hasn't been read yet"
-    }`;
-  };
 }
 
 // Function to hide the form and reveal the main content
@@ -53,20 +47,25 @@ function showForm() {
   main.style.transition = "all 500ms";
 }
 
-// Event listener to toggle the form visibility when clicking the "+ Add Book" button
+// Event listener to add the form visibility
 navButton.addEventListener("click", function () {
-  if (form.classList.contains("hidden")) {
-    showForm(); // Show the form
-  } else {
-    hideForm(); // Hide the form
-  }
+  showForm(); // Show the form
+});
+
+// Event listener to hide the form visibility and reset input fields
+closeFormButton.addEventListener("click", function () {
+  hideForm();
+  bookTitleInput.value = "";
+  bookAuthorInput.value = "";
+  bookPagesInput.value = "";
+  bookReadInput.checked = false;
 });
 
 // Function to display all books in the library
 function displayBooks() {
   main.innerHTML = ""; // Clear the main element
 
-  myLibrary.forEach(function (index) {
+  myLibrary.forEach(function (book) {
     // Create a new book-info element for each book
     const bookInfoElement = document.createElement("section");
     bookInfoElement.classList.add("book-info");
@@ -74,22 +73,22 @@ function displayBooks() {
     // Create elements to display book information
     const titleElement = document.createElement("h2");
     titleElement.classList.add("book-info__title");
-    titleElement.textContent = index.title;
+    titleElement.textContent = book.title;
 
     const authorElement = document.createElement("p");
     authorElement.classList.add("book-info__author");
-    authorElement.textContent = index.author;
+    authorElement.textContent = book.author;
 
     const pagesElement = document.createElement("p");
     pagesElement.classList.add("book-info__pages");
     pagesElement.textContent =
-      index.pages === "1" ? "1 page" : `${index.pages} pages`;
+      book.pages === "1" ? "1 page" : `${book.pages} pages`;
 
     const readElement = document.createElement("span");
     readElement.classList.add("book-info__read");
-    readElement.textContent = index.read ? "Read" : "Not read";
+    readElement.textContent = book.read ? "Read" : "Not read";
 
-    if (index.read) {
+    if (book.read) {
       readElement.style.border = "2px solid green";
       readElement.style.backgroundColor = "rgba(0, 174, 0, 0.524)";
     } else {
@@ -103,7 +102,7 @@ function displayBooks() {
 
     removeElement.addEventListener("click", function () {
       // Find the index of the book to remove
-      const indexToRemove = myLibrary.indexOf(index);
+      const indexToRemove = myLibrary.indexOf(book);
 
       // Check if the index exists in the array (to handle potential issues)
       if (indexToRemove !== -1) {
@@ -123,7 +122,6 @@ function displayBooks() {
     bookInfoElement.appendChild(removeElement);
 
     // Append the book-info element to the main element
-
     main.appendChild(bookInfoElement);
   });
 }
