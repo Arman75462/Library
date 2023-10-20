@@ -35,11 +35,11 @@ Before running the Library application, you should have the following prerequisi
 Follow these steps to set up the application locally:
 
 1. Clone the repository to your local machine:
-   ``sh
+   ```sh
    git clone <repository-url>
 
 2. Navigate to the project directory:
-   ``sh
+   ```sh
    cd <repository-folder>
 
 3. Open the `index.html` file in your preferred web browser.
