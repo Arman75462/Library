@@ -74,15 +74,16 @@ function displayBooks() {
     // Create elements to display book information
     const titleElement = document.createElement("h2");
     titleElement.classList.add("book-info__title");
-    titleElement.textContent = bookTitleInput.value;
+    titleElement.textContent = index.title;
 
     const authorElement = document.createElement("p");
     authorElement.classList.add("book-info__author");
-    authorElement.textContent = bookAuthorInput.value;
+    authorElement.textContent = index.author;
 
     const pagesElement = document.createElement("p");
     pagesElement.classList.add("book-info__pages");
-    pagesElement.textContent = `${bookPagesInput.value} pages`;
+    pagesElement.textContent =
+      index.pages === "1" ? "1 page" : `${index.pages} pages`;
 
     const readElement = document.createElement("span");
     readElement.classList.add("book-info__read");
@@ -100,13 +101,18 @@ function displayBooks() {
     removeElement.classList.add("book-info__remove");
     removeElement.textContent = "Remove";
 
-    // Remove the book from the library and re-display the books
     removeElement.addEventListener("click", function () {
-      // Remove the book from the library at the specific index
-      myLibrary.splice(index, 1);
+      // Find the index of the book to remove
+      const indexToRemove = myLibrary.indexOf(index);
 
-      // Re-display the books to reflect the removal
-      displayBooks();
+      // Check if the index exists in the array (to handle potential issues)
+      if (indexToRemove !== -1) {
+        // Remove the book from the library at the specific index
+        myLibrary.splice(indexToRemove, 1);
+
+        // Re-display the books to reflect the removal
+        displayBooks();
+      }
     });
 
     // Append elements to the book-info element
@@ -132,11 +138,13 @@ submitBookButton.addEventListener("click", function () {
     bookReadInput.checked
   );
 
-  // If one of the form's input is not completed, showForm()
+  // If one of the form's input is not completed, display warning
   if (
     bookTitleInput.value === "" ||
     bookAuthorInput.value === "" ||
-    bookPagesInput.value === ""
+    bookPagesInput.value === "" ||
+    bookPagesInput.value > 10000 ||
+    bookPagesInput.value < 1
   ) {
     showForm();
   } else {

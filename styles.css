@@ -161,12 +161,15 @@ MEDIA QUERIES================
 }
 
 .book-info__title {
-  margin: 1em 0em;
+  margin: 1em auto;
+  width: 75%;
 }
 
 .book-info__author {
   font-size: 1.1rem;
   font-style: italic;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .book-info__pages {
