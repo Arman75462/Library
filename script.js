@@ -17,15 +17,15 @@ const bookReadInput = document.querySelector(".form__read");
 // Create an array to store your library of books
 const myLibrary = [];
 
-// Class for creating a book object
-class Book {
-  constructor(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-  }
+// Constructor function for creating a book object
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
+
+/* This is classFeature */
 
 // Function to hide the form and reveal the main content
 function hideForm() {
